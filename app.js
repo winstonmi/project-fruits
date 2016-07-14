@@ -4,17 +4,19 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const routes = require('./config/routes')
+const router = require('./config/routes')
 const port = process.env.PORT || 3000
 
 // MIDDLEWARE
 // plugin morgan for debugging information
 app.use(morgan('dev'))
-
-// ROUTES
-// keep all api routes in a separate file - prefix routes with api/path
-app.use(routes)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+// router
+// keep all api router in a separate file - prefix router with api/path
+app.use(router)
 
 // server everything in assets folder as static for images etc.
 app.use(express.static('public'))
@@ -48,7 +50,7 @@ app.use((err, req, res, next) => {
 })
 
 // START SERVER
-app.listen(process.env.PORT, () => {
+app.listen(3000, () => {
   console.log('Server Listening on port ${process.env.PORT}')
 })
 
