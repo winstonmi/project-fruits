@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const Apple = require('../models/apple')
-const Cheese = require('../models/cheese')
+
 
 const applesController = require('../controller/apples_controller')
 const cheesesController = require('../controller/cheeses_controller')
+const orangesController = require('../controller/oranges_controller')
 
 router.route('/apples')
 // '/apples' GET
@@ -15,6 +15,19 @@ router.route('/cheeses')
 // '/cheeses' GET
 .get(cheesesController.getAll)
 .post(cheesesController.createCheese)
+
+router.route('/oranges')
+// '/apples' GET
+.get(orangesController.getAll)
+.post(orangesController.createOrange)
+
+router.route('/oranges/:id')
+// 'oranges/:id' GET
+.get(orangesController.getOrange)
+// '/oranges/:id' PUT
+.put(orangesController.updateOrange)
+// '/oranges/:id' DELETE
+.delete(orangesController.destroyOrange)
 
 // router.route('/apples/:id')
 // // '/apples/:id' GET
