@@ -33,8 +33,37 @@ function createOrange (req, res) {
   })
 }
 
+// PUT
+function updateOrange (req, res) {
+  let id = req.params.id
+
+  Orange.findById({_id: id}, (err, orange) => {
+    if (err) res.json({message: 'could not find post b/c: ' + err})
+    if (req.body.origin) orange.origin = req.body.origin
+    if (req.body.color) orange.color = req.body.color
+    if (req.body.price) orange.price = req.body.price
+
+    orange.save((err) => {
+      if (err) res.json({message: 'could not update post b/c: ' + err})
+      res.json({message: 'orange successfully updated'})
+    })
+  })
+}
+
+// DELETE
+function destroyOrange (req, res) {
+  let id = req.params.id
+
+  Orange.remove({_id: id}, (err) => {
+    if (err) res.json({message: 'could not delete post b/c: ' + err})
+    res.json({message: 'orange successfully deleted'})
+  })
+}
+
 module.exports = {
   getAll: getAll,
   getOrange: getOrange,
-  createOrange: createOrange
+  createOrange: createOrange,
+  updateOrange: updateOrange,
+  destroyOrange: destroyOrange
 }

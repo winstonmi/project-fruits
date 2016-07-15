@@ -18,6 +18,10 @@ router.route('/oranges')
 router.route('/oranges/:id')
 // 'oranges/:id' GET
 .get(orangesController.getOrange)
+// '/oranges/:id' PUT
+.put(orangesController.updateOrange)
+// '/oranges/:id' DELETE
+.delete(orangesController.destroyOrange)
 
 // router.route('/apples/:id')
 // // '/apples/:id' GET
