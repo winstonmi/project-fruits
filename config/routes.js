@@ -1,36 +1,37 @@
 const express = require('express')
 const router = express.Router()
-const Apple = require('../models/apple')
-
-//PEAR (LM)
-const Pear = require('../models/pear')
-
+const bananasController = require('../controller/bananas_controller')
 const applesController = require('../controller/apples_controller')
-
-//PEAR (LM)
+const cheesesController = require('../controller/cheeses_controller')
+const orangesController = require('../controller/oranges_controller')
 const pearsController = require('../controller/pears_controller')
 
 
 router.route('/apples')
-// '/apples' GET
-.get(applesController.getAll)
-.post(applesController.createApple)
-
-
-
-// router.route('/apples/:id')
-// // '/apples/:id' GET
-// .get(applesController.getApple)
-// // '/apples/:id' PUT
-// .put(applesController.updateApple)
-// // '/apples/:id' DESTROY
-// .delete(applesController.destroyApple)
-
-//PEAR (LM)
-router.route('/pears')
-// '/apples' GET
-.get(pearsController.getAll)
-.post(pearsController.createPear)
-
-
+  // '/apples' GET
+  .get(applesController.getAll)
+  .post(applesController.createApple)
+router.route('/bananas')
+  // '/bananas' GET
+  .get(bananasController.getAll)
+  .post(bananasController.createBanana)
+router.route('/cheeses')
+  // '/cheeses' GET
+  .get(cheesesController.getAll)
+  .post(cheesesController.createCheese)
+  router.route('/pears')
+    // '/pears' GET
+    .get(pearsController.getAll)
+    .post(pearsController.createPear)
+router.route('/oranges')
+  // '/oranges' GET
+  .get(orangesController.getAll)
+  .post(orangesController.createOrange)
+router.route('/oranges/:id')
+  // 'oranges/:id' GET
+  .get(orangesController.getOrange)
+  // '/oranges/:id' PUT
+  .put(orangesController.updateOrange)
+  // '/oranges/:id' DELETE
+  .delete(orangesController.destroyOrange)
 module.exports = router
