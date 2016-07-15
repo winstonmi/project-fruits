@@ -6,8 +6,6 @@ const AppleSchema = mongoose.Schema({
   price: Number
 })
 
-
-
 var Apple = mongoose.model('Apple', AppleSchema)
 
 module.exports = Apple

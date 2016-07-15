@@ -1,35 +1,37 @@
 const express = require('express')
 const router = express.Router()
-const Apple = require('../models/apple')
-const Banana = require('../models/banana')
 
-const applesController = require('../controller/apples_controller')
 const bananasController = require('../controller/bananas_controller')
+const applesController = require('../controller/apples_controller')
+const cheesesController = require('../controller/cheeses_controller')
+const orangesController = require('../controller/oranges_controller')
 
 router.route('/apples')
   // '/apples' GET
   .get(applesController.getAll)
   .post(applesController.createApple)
 
-// router.route('/apples/:id')
-  // // '/apples/:id' GET
-  // .get(applesController.getApple)
-  // // '/apples/:id' PUT
-  // .put(applesController.updateApple)
-  // // '/apples/:id' DESTROY
-  // .delete(applesController.destroyApple)
-
 router.route('/bananas')
   // '/bananas' GET
   .get(bananasController.getAll)
   .post(bananasController.createBanana)
 
-// router.route('/bananas/:id')
-  // // '/bananas/:id' GET
-  // .get(bananasController.getBanana)
-  // // '/bananas/:id' PUT
-  // .put(bananasController.updateBanana)
-  // // '/bananas/:id' DESTROY
-  // .delete(bananasController.destroyBanana)
+router.route('/cheeses')
+  // '/cheeses' GET
+  .get(cheesesController.getAll)
+  .post(cheesesController.createCheese)
+
+router.route('/oranges')
+  // '/apples' GET
+  .get(orangesController.getAll)
+  .post(orangesController.createOrange)
+
+router.route('/oranges/:id')
+  // 'oranges/:id' GET
+  .get(orangesController.getOrange)
+  // '/oranges/:id' PUT
+  .put(orangesController.updateOrange)
+  // '/oranges/:id' DELETE
+  .delete(orangesController.destroyOrange)
 
 module.exports = router
