@@ -1,14 +1,20 @@
 const express = require('express')
 const router = express.Router()
-// const Apple = require('../models/apple')
-// const Orange = require('../models/orange')
+
+
 const applesController = require('../controller/apples_controller')
+const cheesesController = require('../controller/cheeses_controller')
 const orangesController = require('../controller/oranges_controller')
 
 router.route('/apples')
 // '/apples' GET
 .get(applesController.getAll)
 .post(applesController.createApple)
+
+router.route('/cheeses')
+// '/cheeses' GET
+.get(cheesesController.getAll)
+.post(cheesesController.createCheese)
 
 router.route('/oranges')
 // '/apples' GET
